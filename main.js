@@ -32,6 +32,17 @@ cards.forEach((card) => {
 function checkMatch() {
     let flippedCards = document.querySelectorAll(".flipped:not(.matched)");
 
+    if (flippedCards[0].querySelector(".back img").src.includes("joker")) {
+        document.getElementById("banner").style.display = "block";
+        document.getElementById("banner").innerHTML = "💀 Joker card picked! Game Over!";
+        document.getElementById("banner").style.color = "red";
+
+        setTimeout(() => {
+            location.reload();
+        }, 3000);
+        return;
+    } 
+
     if (flippedCards.length === 2) {
         let img1 = flippedCards[0].querySelector(".back img").src;
         let img2 = flippedCards[1].querySelector(".back img").src;
